@@ -24,6 +24,8 @@ export default () => {
 
         <Route path="/" element={<SignIn />}>
         </Route>
+        <Route path="/registrar" element={<SignUp />}>
+        </Route>
         {/* <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/inventory" element={<Inventory/>}></Route>
         </Route> */}

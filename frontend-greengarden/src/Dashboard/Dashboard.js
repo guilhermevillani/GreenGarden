@@ -83,7 +83,7 @@ function DashboardContent() {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
-          <Toolbar sx={{ pr: '24px', /* keep right padding when drawer closed */ }}>
+          <Toolbar sx={{ pr: '24px' }}>
             <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={toggleDrawer}
               sx={{
                 marginRight: '36px',
@@ -92,13 +92,13 @@ function DashboardContent() {
               <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }} >
-              Dashboard
+              Green Garden
             </Typography>
-            <IconButton color="inherit">
+            {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
