@@ -1,7 +1,10 @@
-﻿namespace GreenGardenAPI.Models
+﻿using System.Text.Json.Serialization;
+
+namespace GreenGardenAPI.Models
 {
     public class User
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

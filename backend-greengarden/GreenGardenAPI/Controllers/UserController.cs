@@ -27,7 +27,7 @@ namespace GreenGardenAPI.Controllers
         public async Task<ActionResult> LoginAsync([FromBody] User user)
         {
             var result = await _userService.LoginUserAsync(user);
-            if(!result)
+            if(result is null)
             {
                 return BadRequest("Senha incorreta!!");
             }

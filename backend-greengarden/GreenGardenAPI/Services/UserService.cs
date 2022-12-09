@@ -2,6 +2,7 @@
 using GreenGardenAPI.Models;
 using GreenGardenAPI.Services.Intefaces;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace GreenGardenAPI.Services
@@ -26,19 +27,26 @@ namespace GreenGardenAPI.Services
             return user;
         }
 
-        public async Task<bool> LoginUserAsync(User user)
+        public async Task<User> LoginUserAsync(User user)
         {
-          //  var dbUsers = await _context.Users.ToListAsync();
-            var userOnDb = await _context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(user.UserName));
-
+            var userOnDb = await _context.Users.FirstOrDefaultAsync(u => u.Email.Equals(user.Email));
             if (userOnDb != null)
             {
-               var passwprd = DecryptPassword(userOnDb.Password);
-                return user.Password.Equals(passwprd);
-
+                var passwprd = DecryptPassword(userOnDb.Password);
+                if (user.Password.Equals(passwprd)) 
+                {
+                    return userOnDb;
+                }
             }
-            return false;
+            return null;
+        }    
+
+        public List<User> GetAll()
+        {
+           var userOnDb = _context.Users.ToList();
+            return userOnDb;
         }
+
 
         private string EncryptPassword (string password)
         {

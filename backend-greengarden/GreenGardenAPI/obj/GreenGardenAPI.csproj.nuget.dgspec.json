@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj": {}
+    "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj": {
+    "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj",
+        "projectUniqueName": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj",
         "projectName": "GreenGardenAPI",
-        "projectPath": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj",
+        "projectPath": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj",
         "packagesPath": "C:\\Users\\guilh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\obj\\",
+        "outputPath": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guilh\\AppData\\Roaming\\NuGet\\NuGet.Config",

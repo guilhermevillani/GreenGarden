@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GOQh1HWU0psstriBBOa5po+/cGgAlNcwuGHa+ShAYMGK94TeyQ7khuYzw6PmA90HKfK3qPd0ZTcThw6xwnFEJQ==",
+  "dgSpecHash": "m2gxKn9tt4RfSMCuSjKayT4jLV8+AtP85e20PB81pLPXQhbYCQ82RvGAOKOhAk6BPPUxdlftWt9krkWAuv/ZSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj",
+  "projectFilePath": "C:\\Users\\guilh\\source\\repos\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI\\GreenGardenAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\guilh\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\guilh\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

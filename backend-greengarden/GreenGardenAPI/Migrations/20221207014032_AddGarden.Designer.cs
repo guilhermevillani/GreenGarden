@@ -4,6 +4,7 @@ using GreenGardenAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenGardenAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221207014032_AddGarden")]
+    partial class AddGarden
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,9 +160,6 @@ namespace GreenGardenAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GardenId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -176,8 +176,6 @@ namespace GreenGardenAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GardenId");
 
                     b.ToTable("Users");
                 });
@@ -200,17 +198,8 @@ namespace GreenGardenAPI.Migrations
                         .HasForeignKey("GardenId");
                 });
 
-            modelBuilder.Entity("GreenGardenAPI.Models.User", b =>
-                {
-                    b.HasOne("GreenGardenAPI.Models.Garden", null)
-                        .WithMany("Admin")
-                        .HasForeignKey("GardenId");
-                });
-
             modelBuilder.Entity("GreenGardenAPI.Models.Garden", b =>
                 {
-                    b.Navigation("Admin");
-
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

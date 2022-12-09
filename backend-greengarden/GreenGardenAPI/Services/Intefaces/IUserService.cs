@@ -6,6 +6,8 @@ namespace GreenGardenAPI.Services.Intefaces
     {
         Task<User> RegisterUserAsync(User user);
 
-        Task<bool> LoginUserAsync(User user);
+        Task<User> LoginUserAsync(User user);
+
+        List<User> GetAll();
     }
 }
