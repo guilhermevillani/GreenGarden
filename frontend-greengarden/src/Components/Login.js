@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { Fragment, useState } from "react";
+import Button from '@mui/material/Button';
+import SignIn from './SignIn';
 
 function Login() {
 
@@ -15,9 +17,9 @@ function Login() {
 
     const handleLogin = (value) => {
         const data = {
-            Name : name,
-            Cpf : cpf,
-            IsActive : 1
+            Name: name,
+            Cpf: cpf,
+            IsActive: 1
         };
 
         const url = 'https://localhost:44386/api/Login/Login';
@@ -29,13 +31,18 @@ function Login() {
     }
     return (
         <Fragment>
-     <br></br>
-            <div>LOGIN</div>
+            {/* <br></br> */}
+            {/* <div>LOGIN</div>
             <label>Name</label>
             <input type="text" id="name" placeholder="Digite seu nome" onChange={(e) => handleNameChange(e.target.value)}></input>
             <label>CPF</label>
             <input type="text" id="cpf" placeholder="Digite seu CPF" onChange={(e) => handleCpfChange(e.target.value)}></input>
-            <button onClick={() => handleLogin()}>Entrar</button>
+            <button onClick={() => handleLogin()}>Entrar</button> */}
+
+            {/* <div>
+                <Button color="secondary" variant="contained">Hello World</Button>
+            </div> */}
+            <SignIn></SignIn>
         </Fragment>
     )
 }
