@@ -14,7 +14,7 @@ namespace GreenGardenAPI.Controllers
             _gardenService = gardenService;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("Garden/Register")]
         public ActionResult Register([FromBody] Garden garden)
         {
             var result = _gardenService.RegisterNewGarden(garden);
@@ -27,7 +27,7 @@ namespace GreenGardenAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("/{gardenName}/Products")]
+        [HttpPost("Garden/{gardenName}/Products")]
         public ActionResult RegisterProduct(string gardenName, [FromBody] Products product)
         {
             var result = _gardenService.RegisterProduct(gardenName, product);
@@ -40,7 +40,7 @@ namespace GreenGardenAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("/{gardenName}")]
+        [HttpGet("Garden/{gardenName}")]
         public ActionResult GetGardenByName(string gardenName)
         {
             var result = _gardenService.GetGardenByName(gardenName);
