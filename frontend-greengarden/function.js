@@ -1,3 +1,5 @@
+////---INI::Login usuário---////
+
 function postLogin(url, body) {
   // console.log("Body=", body)
   // let request = new XMLHttpRequest()
@@ -47,7 +49,7 @@ function login() {
   postLogin(url, body)
 }
 
-////-----////
+////---INI::Registrar usuário---////
 
 function postRegister(body) {
   console.log(body)
@@ -91,10 +93,9 @@ function register() {
   postRegister(body)
 }
 
-///-----///
+////---INI::Registrar Horta---////
 
 function postRegisterGarden(body) {
-  console.log(body)
   fetch('https://localhost:7002/Garden/Register', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -106,7 +107,7 @@ function postRegisterGarden(body) {
     .then((body) => {
       console.log('Success:', body);
       alert('Registro realizado com sucesso! Faça seu login para acessar o sistema.');
-      window.location.href = "pages-login.html";
+      // window.location.href = "pages-login.html";
     })
     .catch((error) => {
       // alert('Erro encontrado!');
@@ -115,6 +116,20 @@ function postRegisterGarden(body) {
 
 }
 
+let bannerBase64;
+
+const banner = document.querySelector("#banner")
+banner.addEventListener("change", function() {
+
+  const reader = new FileReader()
+  
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function(){
+    bannerBase64 = reader.result;
+  }
+})
+
 function registerGarden() {
   event.preventDefault()
 
@@ -122,7 +137,7 @@ function registerGarden() {
   let description = document.getElementById('description').value;
   let phone = document.getElementById('phone').value;
   let objective = document.getElementById('objective').value;
-  let address = document.getElementById('address').value;
+  // let address = document.getElementById('address').value;
   // let bannerURL = document.getElementById('bannerURL');
   // let imageURL = document.getElementById('imageURL');
   // let logoURL = document.getElementById('logoURL');
@@ -141,41 +156,65 @@ function registerGarden() {
 
   // }
   body = {
-    "name": 'HORTA',
-    "description": 'HORTA',
-    "phone": 'HORTA',
-    "objective": 'HORTA',
+    "Name": name,
+    "Description": description,
+    "Phone": phone,
+    "Objective": objective,
+    "BannerURL": bannerBase64,
     "adress": {
-      "street": 'HORTA',
-      "city": 'HORTA',
-      "state": 'HORTA',
-      "postalCode": 'HORTA',
-      "country": 'HORTA'
+
     },
-    "bannerURL": 'HORTA',
-    "imageURL": 'HORTA',
-    "logoURL": 'HORTA',
     "products": [
       {
-        "name": 'HORTA',
-        "description": 'HORTA',
-        "imageURL": 'HORTA',
-        "quantity": 0,
-        "expiratioDate": '2022-12-14T15:12:54.536Z'
+
       }
     ],
     "admins": [
       {
-        "firstName": 'HORTA',
-        "lastName": 'HORTA',
-        "cpf": 'HORTA',
-        "email": 'HORTA',
-        "isActive": true,
-        "userName": 'HORTA',
-        "password": 'HORTA'
+
       }
     ]
   }
 
   postRegisterGarden(body)
 }
+
+////---INI::Buscar dados horta e preencher página---////
+
+function openGarden() {
+  event.preventDefault();
+  
+
+  let name = document.getElementById('name').value;
+  var url = window.location.origin.concat('/garden.html').concat('?gardenName=' + name)
+  window.location.href = url;
+  
+}
+
+function getGardenData(name) {
+  event.preventDefault()
+  // let name = document.getElementById('name').value;
+
+  fetch('https://localhost:7002/Garden/Garden/'.concat(name))
+    .then(function (serverPromise) {
+      serverPromise.json()
+        .then(function (result) {
+          console.log('resulti', result);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+}
+
+
+
+
+
+
+
+
