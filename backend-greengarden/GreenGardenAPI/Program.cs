@@ -2,6 +2,7 @@ using GreenGardenAPI.Data;
 using GreenGardenAPI.Services;
 using GreenGardenAPI.Services.Intefaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
