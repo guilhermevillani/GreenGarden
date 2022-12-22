@@ -1,20 +1,6 @@
-////---INI::Login usuário---////
+
 
 function postLogin(url, body) {
-  // console.log("Body=", body)
-  // let request = new XMLHttpRequest()
-  // request.open("POST", url, true)
-  // request.setRequestHeader("Content-type", "application/json")
-  // request.send(JSON.stringify(body))
-
-  // request.onload = function () {
-  //   console.log(JSON.parse(this.responseText))
-  //   alert('Login realizado com sucesso');
-  //   window.location.href = "Dash.html";
-  // }
-
-  // return request.responseText
-
   fetch('https://localhost:7002/User/Login', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -50,7 +36,6 @@ function login() {
   postLogin(url, body)
 }
 
-////---INI::Registrar usuário---////
 
 function postRegister(body) {
   console.log(body)
@@ -109,7 +94,7 @@ function postRegisterGarden(body) {
       console.log('Success:', body);
       alert('Registro realizado com sucesso!');
       localStorage.gardenName = body.name;
-      localStorage.gardenId = body.id;
+      localStorage.gardemId = body.id;
       history.go(); //recarrega pagina para mostrar campos de edição
     })
     .catch((error) => {
@@ -120,7 +105,7 @@ function postRegisterGarden(body) {
 }
 
 //// - GET VALUES OF IMAGES
-let bannerBase64 = '';
+let bannerBase64;
 const banner = document.querySelector("#banner")
 banner.addEventListener("change", function () {
 
@@ -133,6 +118,32 @@ banner.addEventListener("change", function () {
   }
 })
 
+let imageObjective;
+const objective = document.querySelector("#objective")
+objective.addEventListener("change", function () {
+
+  const reader = new FileReader()
+
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function () {
+    imageObjective = reader.result;
+  }
+})
+
+let logoImage
+const logo = document.querySelector("#logoImage")
+logo.addEventListener("change", function () {
+
+  const reader = new FileReader()
+
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function () {
+    logoImage = reader.result;
+  }
+})
+
 function registerGarden() {
   event.preventDefault()
 
@@ -141,7 +152,7 @@ function registerGarden() {
   let phone = document.getElementById('phone').value;
   let objective = document.getElementById('objective').value;
   let adress = document.getElementById('adress').value;
-  
+
   // "BannerURL": bannerBase64,
   body = {
     "Name": name,
@@ -149,9 +160,9 @@ function registerGarden() {
     "Phone": phone,
     "Objective": objective,
     "adress": adress,
-    "bannerURL": 'imagem',
-    "imageURL": 'imagem',
-    "logoURL": 'imagem',
+    "BannerURL": bannerBase64,
+    "imageURL": imageObjective,
+    "logoURL": logoImage,
     "userId": localStorage.userId,
   }
 
@@ -162,7 +173,6 @@ function registerGarden() {
 
 function openGarden() {
   event.preventDefault();
-
 
   let name = document.getElementById('name').value;
   var url = window.location.origin.concat('/garden.html').concat('?gardenName=' + localStorage.gardenName)
@@ -178,7 +188,7 @@ function getGardenData(name) {
     .then(function (serverPromise) {
       serverPromise.json()
         .then(function (result) {
-          console.log('resulti', result);
+          return result.json();
         })
         .catch(function (error) {
           console.log(error);
@@ -192,7 +202,49 @@ function getGardenData(name) {
 
 ////---INI::UPDATE GARDEN---////
 
-function updateGarden(){
+let testBanner;
+const updateTestBanner = document.querySelector("#updateBanner")
+updateTestBanner.addEventListener("change", function () {
+
+  const reader = new FileReader()
+
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function () {
+    testBanner = reader.result;
+  }
+})
+
+let updateImage
+const updateObjectiveImage = document.querySelector("#updateImage")
+updateObjectiveImage.addEventListener("change", function () {
+
+  const reader = new FileReader()
+
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function () {
+    updateImage = reader.result;
+  }
+})
+
+let logoUpdateImage
+const logoUpdate = document.querySelector("#updateLogoImage")
+logoUpdate.addEventListener("change", function () {
+
+  const reader = new FileReader()
+
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function () {
+    logoUpdateImage = reader.result;
+  }
+})
+
+
+
+
+function updateGarden() {
   event.preventDefault()
 
   let name = document.getElementById('updateName').value;
@@ -200,28 +252,33 @@ function updateGarden(){
   let phone = document.getElementById('updatePhone').value;
   let objective = document.getElementById('updateObjective').value;
   let adress = document.getElementById('updateAdress').value;
-  
+
+
+
+
   // "BannerURL": bannerBase64,
   body = {
-    "id": localStorage.gardenId,
+    "id": localStorage.gardemId,
     "name": name,
     "description": description,
     "phone": phone,
     "objective": objective,
     "adress": adress,
-    "bannerURL": "string",
-    "imageURL": "string",
-    "logoURL": "string",
+    "BannerURL": testBanner,
+    "imageURL": updateImage,
+    "LogoURL": logoUpdateImage,
     "products": [
       {
-        
+
       }
     ],
     "userId": localStorage.userId,
     "user": null
   }
 
-  fetch('https://localhost:7002/Garden/'.concat(localStorage.gardenName), {
+  console.log('body', body)
+
+  fetch('https://localhost:7002/Garden/'.concat(localStorage.gardemName), {
     method: 'PUT', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -233,6 +290,7 @@ function updateGarden(){
       alert('Registro realizado com sucesso!');
       console.log('Success:', body);
       localStorage.gardenName = body.name;
+      localStorage.gardemId = body.id;
 
       document.getElementById("create").style.display = "none";
       document.getElementById("update").style.display = "block";
@@ -247,6 +305,67 @@ function updateGarden(){
 
 }
 
+var product;
+const productImg = document.querySelector("#lalala")
+productImg.addEventListener("change", function () {
+
+  const reader = new FileReader()
+
+  reader.readAsDataURL(this.files[0])
+
+  reader.onload = function () {
+    product = reader.result;
+  }
+})
+
+function registerProduct() {
+  event.preventDefault()
+
+  let name = document.getElementById('name').value;
+  let description = document.getElementById('description').value;
+  let quantity = document.getElementById('quantity').value;
+
+  body = {
+    "id": 0,
+    "name": name,
+    "description": description,
+    "imageURL": product,
+    "quantity": quantity,
+    "expiratioDate": "2022-12-21T03:58:10.493Z"
+  }
+
+
+  fetch('https://localhost:7002/Garden/'.concat(localStorage.userId).concat('/v2'))
+    .then(function (serverPromise) {
+      serverPromise.json()
+        .then(function (result) {
+
+          fetch('https://localhost:7002/Garden/'.concat(result.name).concat('/Products'), {
+            method: 'POST', // or 'PUT'
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+          })
+            .then((response) => response.json())
+            .then((body) => {
+              alert('Registro realizado com sucesso!');
+
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        })
+        .catch(function (error) {
+          console.log('Horta não encontrada');
+
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+}
 
 
 

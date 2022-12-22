@@ -88,11 +88,6 @@
               <i class="bi bi-circle"></i><span>Estoque</span>
             </a>
           </li>
-          <li>
-            <a href="Garden.html">
-              <i class="bi bi-circle"></i><span>Horta</span>
-            </a>
-          </li>
         </ul>
       </li><!-- End Forms Nav -->
     </ul>
@@ -108,7 +103,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item">Cadastros</li>
+            <li class="breadcrumb-item">Serviços</li>
             <li class="breadcrumb-item active">Horta</li>
           </ol>
         </nav>
@@ -122,7 +117,7 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Informe os dados da horta</h5>
+                <h5 class="card-title">Informe os dados do produto</h5>
 
                 <!-- Horizontal Form -->
                 <form>
@@ -137,64 +132,31 @@
 
 
                   <div class="row mb-3">
-                    <label for="phone" class="col-sm-2 col-form-label">Telefone</label>
+                    <label for="phone" class="col-sm-2 col-form-label">Descrição</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="phone">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="address" class="col-sm-2 col-form-label">Endereço</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="adress">
+                      <input type="text" class="form-control" id="description">
                     </div>
                   </div>
 
 
 
                   <div class="row mb-3">
-                    <label for="objective" class="col-sm-2 col-form-label">Objetivo</label>
+                    <label for="name" class="col-sm-2 col-form-label">Quantidade</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" id="objective" style="height: 100px;"></textarea>
+                      <input type="number" class="form-control" id="quantity">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="description" class="col-sm-2 col-form-label">Descrição</label>
+                    <label for="image" class="col-sm-2 col-form-label">Imagem </label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" id="description" style="height: 100px;"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="banner" class="col-sm-2 col-form-label">Banner</label>
-                    <div class="col-sm-10">
-                      <input type="file" id="banner" accept="image/jpeg, image/png, image/jpg">
-                      <img id="image" style="width: 200px; height: auto;">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="image" class="col-sm-2 col-form-label">Imagem Inicial</label>
-                    <div class="col-sm-10">
-                      <input type="file" id="image" multiple />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="logo" class="col-sm-2 col-form-label">Logo</label>
-                    <div class="col-sm-10">
-                      <input type="file" id="logo" multiple />
+                      <input type="file" id="lalala" multiple />
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary" onclick="registerGarden()">Salvar</button>
-                    </div>
-
-                    <div class="text-center">
-                      <button class="btn btn-outline-primary" onclick="openGarden()">Visualizar página</button>
+                      <button type="submit" class="btn btn-primary" onclick="registerProduct()">Salvar</button>
                     </div>
                   </div>
 
@@ -202,128 +164,19 @@
 
               </div>
             </div>
-
+            <!-- listar produtos do estoque -->
+            <div id="list-products"></div>
           </div>
 
           <div class="col-md-1 col-lg-1"></div>
 
         </div>
-      </section>
 
+      </section>
     </div>
 
-    <!-------------------------- FORM EDIT -------------------------->
-
-    <div id="update">
-
-      <div class="pagetitle">
-        <h1>Horta</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item">Cadastros</li>
-            <li class="breadcrumb-item active">Horta</li>
-          </ol>
-        </nav>
-      </div><!-- End Page Title -->
-      <section class="section">
-        <div class="row">
-
-          <div class="col-md-1 col-lg-1"></div>
-
-          <div class="col-lg-10">
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Edite os dados da horta</h5>
-
-                <!-- Horizontal Form -->
-                <form>
-
-                  <div class="row mb-3">
-                    <label for="name" class="col-sm-2 col-form-label">Nome</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="updateName">
-                    </div>
-                  </div>
 
 
-
-                  <div class="row mb-3">
-                    <label for="phone" class="col-sm-2 col-form-label">Telefone</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="updatePhone">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="address" class="col-sm-2 col-form-label">Endereço</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="updateAdress">
-                    </div>
-                  </div>
-
-
-
-                  <div class="row mb-3">
-                    <label for="objective" class="col-sm-2 col-form-label">Objetivo</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="updateObjective" style="height: 100px;"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="description" class="col-sm-2 col-form-label">Descrição</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="updateDescription" style="height: 100px;"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="banner" class="col-sm-2 col-form-label">Banner</label>
-                    <div class="col-sm-10">
-                      <input type="file" id="updateBanner" accept="image/jpeg, image/png, image/jpg">
-                      <img id="image" style="width: 200px; height: auto;">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="image" class="col-sm-2 col-form-label">Imagem Inicial</label>
-                    <div class="col-sm-10">
-                      <input type="file" id="updateImage" multiple />
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="logo" class="col-sm-2 col-form-label">Logo</label>
-                    <div class="col-sm-10">
-                      <input type="file" id="updateLogo" multiple />
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary" onclick="updateGarden()">Salvar</button>
-                    </div>
-
-                    <div class="text-center">
-                      <button class="btn btn-outline-primary" onclick="openGarden()">Visualizar página</button>
-                    </div>
-                  </div>
-
-                </form><!-- End Horizontal Form -->
-
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-md-1 col-lg-1"></div>
-
-        </div>
-      </section>
-
-    </div>
 
   </main>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -342,38 +195,127 @@
     // ao carregar a pagina GARDEN
     (function () {
 
+      if (localStorage.userId != null || localStorage.userId != undefined) {
+        console.log('localStorage.userId: ', localStorage.userId)
 
-      
-      getGardenData();
-      function getGardenData() {
-        // let name = document.getElementById('name').value;
-        const gardemName = localStorage.gardenName;
-
-        fetch('https://localhost:7002/Garden/'.concat(gardemName))
+        const listProducts = document.querySelector('#list-products')
+        var gardenData = fetch('https://localhost:7002/Garden/'.concat(localStorage.userId).concat('/v2'))
           .then(function (serverPromise) {
             serverPromise.json()
               .then(function (result) {
-                //ocultar create e mostrar update
-                document.getElementById("create").style.display = "none";
-                document.getElementById("update").style.display = "block";
 
-                console.log('result', result);
-                document.getElementById('updateName').value = result.name;
-                document.getElementById('updatePhone').value = result.phone;
-                document.getElementById('updateDescription').value = result.description;
-                document.getElementById('updateObjective').value = result.objective;
-                document.getElementById('updateAdress').value = result.adress;
+                console.log('result: ', result)
+
+                fetch('https://localhost:7002/Garden/'.concat(result.name).concat('/Products'))
+                  .then(function (serverPromise) {
+                    serverPromise.json()
+                      .then(function (data) {
+
+                        console.log('products ', data)
+                        for (let index = 0; index < data.length; index++) {
+                          if (data[index].name == null) {
+                            delete data[index]
+                          }
+
+                        }
+
+                        var xxx = data.map(({ id, name, description, imageURL, quantity }) =>
+                                        `<div class="card mb-3">
+                                            <div class="row g-0">
+                                              <div class="col-md-3">
+                                                <img src="${imageURL}" style="width: 750%; heigth: 100%" class="img-fluid rounded-start" alt="...">
+                                              </div>
+                                              <div class="col-md-7">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">${name}</h5>
+                                                  <p class="card-text">${description}</p>
+                                                </div>
+                                              </div>
+                                              <div class="col-md-2">
+                                                <h5 class="card-title">Quantidade</h5>
+                                                  <p class="card-text">${quantity}</p>
+                                              </div>
+                                            </div>
+                                          </div>`
+                                      ).join('')
+
+                        listProducts.innerHTML += xxx
+
+                      })
+                      .catch(function (error) {
+                        console.log('erro 1');
+
+                      });
+                  })
+                  .catch(function (error) {
+                    console.log('erro 2');
+                  });
+                //  return result.json();
               })
               .catch(function (error) {
-                console.log('horta ainda não cadastrada');
-                document.getElementById("update").style.display = "none";
+                console.log('Horta não encontrada');
+
               });
           })
           .catch(function (error) {
             console.log(error);
           });
 
+        // console.log('gardenData: ' , gardenData)
+        //getProducts();
+
       }
+      // const listProducts = document.querySelector('#list-products')
+
+      // async function getProducts() {
+      //   // let name = document.getElementById('name').value;
+      //   const gardemName = localStorage.gardenName;
+
+      //   await fetch('https://localhost:7002/Garden/'.concat(localStorage.userId).concat('/Products'))
+      //     .then(function (serverPromise) {
+      //       serverPromise.json()
+      //         .then(function (result) {
+
+      //           for (let index = 0; index < result.length; index++) {
+      //             if (result[index].name == null) {
+      //               delete result[index]
+      //             }
+
+      //           }
+
+      //           var xxx = result.map(({ id, name, description, imageURL, quantity }) =>
+      //             `<div class="card mb-3">
+      //                 <div class="row g-0">
+      //                   <div class="col-md-3">
+      //                     <img src="${imageURL}" style="width: 750%; heigth: 100%" class="img-fluid rounded-start" alt="...">
+      //                   </div>
+      //                   <div class="col-md-7">
+      //                     <div class="card-body">
+      //                       <h5 class="card-title">${name}</h5>
+      //                       <p class="card-text">${description}</p>
+      //                     </div>
+      //                   </div>
+      //                   <div class="col-md-2">
+      //                     <h5 class="card-title">Quantidade</h5>
+      //                       <p class="card-text">${quantity}</p>
+      //                   </div>
+      //                 </div>
+      //               </div>`
+      //           ).join('')
+
+      //           listProducts.innerHTML += xxx
+
+      //         })
+      //         .catch(function (error) {
+      //           console.log('Nenhum produto cadastrado');
+
+      //         });
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+
+      // }
 
 
     })();

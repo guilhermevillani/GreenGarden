@@ -109,9 +109,13 @@
         body: JSON.stringify(body),
       })
         .then((response) => response.json())
-        .then((body) => {
-          console.log('Success:', body);
-          localStorage.userId = body.id;
+        .then(function (result) {
+          console.log('result', result);
+
+          localStorage.gardenName = '';
+          localStorage.gardemId = '';
+
+          localStorage.userId = result.id;
           alert('Login realizado com sucesso');
           window.location.href = "Dash.html";
         })

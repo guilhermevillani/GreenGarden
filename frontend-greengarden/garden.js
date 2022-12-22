@@ -11,7 +11,7 @@ function getGardenData(name) {
   const gardemName = localStorage.gardenName;
    console.log(gardemName)
 
-  fetch('https://localhost:7002/Garden/'.concat(gardemName))
+  fetch('https://localhost:7002/Garden/'.concat(localStorage.userId).concat('/v2'))
     .then(function (serverPromise) {
       serverPromise.json()
         .then(function (result) {
@@ -23,15 +23,12 @@ function getGardenData(name) {
           document.getElementById('footerPhone').innerHTML = `${result.phone}`;
           document.getElementById('gardenDescription').innerHTML = `${result.description}`;
           document.getElementById('objective').innerHTML = `${result.objective}`;
+          document.getElementById('adress').innerHTML = `${result.adress}`;
           // document.getElementById('banner').innerHTML = `${result.bannerURL}`.outerHTML;
           document.getElementById("banner").src=`${result.bannerURL}`;
+          document.getElementById("imageCenter").src=`${result.imageURL}`;
+          document.getElementById("logoImage").src=`${result.logoURL}`;
 
-          var reader = new FileReader();
-          reader.onload = function () {
-            var output = document.getElementById('output_image');
-            output.src = reader.result;
-          }
-          reader.readAsDataURL(event.target.files[0]);
 
         })
         .catch(function (error) {

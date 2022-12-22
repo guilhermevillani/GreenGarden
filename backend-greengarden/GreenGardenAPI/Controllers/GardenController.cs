@@ -65,6 +65,19 @@ namespace GreenGardenAPI.Controllers
 
             return Ok(result);
         }
+        
+        [HttpGet("Garden/{userId}/v2")]
+        public ActionResult GetGardenByUserId(int userId)
+        {
+            var result = _gardenService.GetGardenByUserId(userId);
+
+            if (result is null)
+            {
+                return BadRequest($"Garden {userId} Not Found");
+            }
+
+            return Ok(result);
+        }
 
         [HttpPut("Garden/{gardenName}")]
         public ActionResult UpdateGardenByName(string gardenName, [FromBody] Garden garden)
