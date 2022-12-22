@@ -8,9 +8,10 @@ function getGardenName() {
 
 function getGardenData(name) {
   // let name = document.getElementById('name').value;
-  const gardemName = getGardenName();
+  const gardemName = localStorage.gardenName;
+   console.log(gardemName)
 
-  fetch('https://localhost:7002/Garden/Garden/'.concat(gardemName))
+  fetch('https://localhost:7002/Garden/'.concat(gardemName))
     .then(function (serverPromise) {
       serverPromise.json()
         .then(function (result) {

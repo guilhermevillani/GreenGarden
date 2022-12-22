@@ -25,8 +25,9 @@ function postLogin(url, body) {
     .then((response) => response.json())
     .then((body) => {
       console.log('Success:', body);
+
       alert('Login realizado com sucesso');
-      window.location.href = "Dash.html";
+      //window.location.href = "Dash.html";
     })
     .catch((error) => {
       alert('Usuário ou senha incorretos!');
@@ -106,8 +107,10 @@ function postRegisterGarden(body) {
     .then((response) => response.json())
     .then((body) => {
       console.log('Success:', body);
-      alert('Registro realizado com sucesso! Faça seu login para acessar o sistema.');
-      // window.location.href = "pages-login.html";
+      alert('Registro realizado com sucesso!');
+      localStorage.gardenName = body.name;
+      localStorage.gardenId = body.id;
+      history.go(); //recarrega pagina para mostrar campos de edição
     })
     .catch((error) => {
       // alert('Erro encontrado!');
@@ -116,16 +119,16 @@ function postRegisterGarden(body) {
 
 }
 
-let bannerBase64;
-
+//// - GET VALUES OF IMAGES
+let bannerBase64 = '';
 const banner = document.querySelector("#banner")
-banner.addEventListener("change", function() {
+banner.addEventListener("change", function () {
 
   const reader = new FileReader()
-  
+
   reader.readAsDataURL(this.files[0])
 
-  reader.onload = function(){
+  reader.onload = function () {
     bannerBase64 = reader.result;
   }
 })
@@ -137,43 +140,19 @@ function registerGarden() {
   let description = document.getElementById('description').value;
   let phone = document.getElementById('phone').value;
   let objective = document.getElementById('objective').value;
-  // let address = document.getElementById('address').value;
-  // let bannerURL = document.getElementById('bannerURL');
-  // let imageURL = document.getElementById('imageURL');
-  // let logoURL = document.getElementById('logoURL');
-
-
-
-  // body = {
-  //   "Name": name,
-  //   "Description": description,
-  //    "Phone": phone,
-  //    "Objective": objective,
-  //   // "Adress": address
-  //   // "BannerURL": bannerURL,
-  //   // "ImageURL": imageURL,
-  //   // "LogoURL": logoURL
-
-  // }
+  let adress = document.getElementById('adress').value;
+  
+  // "BannerURL": bannerBase64,
   body = {
     "Name": name,
     "Description": description,
     "Phone": phone,
     "Objective": objective,
-    "BannerURL": bannerBase64,
-    "adress": {
-
-    },
-    "products": [
-      {
-
-      }
-    ],
-    "admins": [
-      {
-
-      }
-    ]
+    "adress": adress,
+    "bannerURL": 'imagem',
+    "imageURL": 'imagem',
+    "logoURL": 'imagem',
+    "userId": localStorage.userId,
   }
 
   postRegisterGarden(body)
@@ -183,12 +162,12 @@ function registerGarden() {
 
 function openGarden() {
   event.preventDefault();
-  
+
 
   let name = document.getElementById('name').value;
-  var url = window.location.origin.concat('/garden.html').concat('?gardenName=' + name)
+  var url = window.location.origin.concat('/garden.html').concat('?gardenName=' + localStorage.gardenName)
   window.location.href = url;
-  
+
 }
 
 function getGardenData(name) {
@@ -211,6 +190,62 @@ function getGardenData(name) {
 
 }
 
+////---INI::UPDATE GARDEN---////
+
+function updateGarden(){
+  event.preventDefault()
+
+  let name = document.getElementById('updateName').value;
+  let description = document.getElementById('updateDescription').value;
+  let phone = document.getElementById('updatePhone').value;
+  let objective = document.getElementById('updateObjective').value;
+  let adress = document.getElementById('updateAdress').value;
+  
+  // "BannerURL": bannerBase64,
+  body = {
+    "id": localStorage.gardenId,
+    "name": name,
+    "description": description,
+    "phone": phone,
+    "objective": objective,
+    "adress": adress,
+    "bannerURL": "string",
+    "imageURL": "string",
+    "logoURL": "string",
+    "products": [
+      {
+        
+      }
+    ],
+    "userId": localStorage.userId,
+    "user": null
+  }
+
+  fetch('https://localhost:7002/Garden/'.concat(localStorage.gardenName), {
+    method: 'PUT', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      alert('Registro realizado com sucesso!');
+      console.log('Success:', body);
+      localStorage.gardenName = body.name;
+
+      document.getElementById("create").style.display = "none";
+      document.getElementById("update").style.display = "block";
+
+
+      history.go(); //recarrega pagina para mostrar campos de edição
+    })
+    .catch((error) => {
+      // alert('Erro encontrado!');
+      console.error('Error:', error);
+    });
+
+}
 
 
 

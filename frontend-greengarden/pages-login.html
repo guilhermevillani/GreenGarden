@@ -111,6 +111,7 @@
         .then((response) => response.json())
         .then((body) => {
           console.log('Success:', body);
+          localStorage.userId = body.id;
           alert('Login realizado com sucesso');
           window.location.href = "Dash.html";
         })
